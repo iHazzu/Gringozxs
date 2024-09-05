@@ -3,6 +3,12 @@ import aiopg
 from urllib.parse import urlparse
 from typing import Optional, Tuple, List, Any
 import sys, asyncio
+import selectors
+
+
+selectors._PollLikeSelector.modify = (  # type: ignore
+    selectors._BaseSelectorImpl.modify  # type: ignore
+)
 
 
 class DataBase:
