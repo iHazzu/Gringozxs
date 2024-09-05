@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
-import aiomysql
+import aiopg
+from urllib.parse import urlparse
 from typing import Optional, Tuple, List, Any
+import sys, asyncio
 
 
 class DataBase:
     def __init__(self, max_conections: int) -> None:
         self.max_conections = max_conections
-        self.pool: Optional[aiomysql.Pool] = None
+        self.pool: Optional[aiopg.Pool] = None
+        if sys.platform == 'win32':
+            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    async def connect(self, dsn: str) -> None:
-        params = dict(kwarg.split(":") for kwarg in dsn.split())
-        self.pool = await aiomysql.create_pool(maxsize=self.max_conections, autocommit=True, **params)
+    async def connect(self, url: str) -> None:
+        # also run on windows
+        p = urlparse(url)
+        dsn = f"dbname={p.path[1:]} user={p.username} password={p.password} host={p.hostname}"
+        self.pool = await aiopg.create_pool(dsn=dsn, maxsize=self.max_conections)
 
     def close(self) -> None:
         print(f"- Fechando conexões do pool.")
