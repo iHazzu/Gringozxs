@@ -1,2 +1,2 @@
 # Discord-Bot
-A template for creating discord bots
+Um bot do Discord para jogadores apostarem corridas e fugas no FiveM
