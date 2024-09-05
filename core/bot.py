@@ -16,7 +16,7 @@ class Bot(commands.Bot):
         self.db = DataBase(max_conections=10)
 
     async def setup_hook(self) -> None:
-        await self.db.connect(env["DATABASE_DSN"])
+        await self.db.connect(env["DATABASE_URL"])
 
     async def terminate(self) -> None:
         self.db.close()
