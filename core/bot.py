@@ -9,7 +9,7 @@ class Bot(commands.Bot):
         super().__init__(
             command_prefix="!",
             case_insensitive=True,
-            intents=discord.Intents(messages=True, message_content=True, guilds=True),
+            intents=discord.Intents(messages=True, members=True, guilds=True),
             member_cache_flags=discord.MemberCacheFlags.none(),
             max_messages=None
         )
