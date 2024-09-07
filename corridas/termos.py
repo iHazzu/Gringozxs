@@ -17,7 +17,7 @@ async def acept_terms(itc: Interaction) -> Optional[Interaction]:
     if data[0][0]:
         return itc
     view = TermsView()
-    await itc.response.send_message(embeds=term_embeds, view=TermsView())
+    await itc.response.send_message(embeds=term_embeds, view=TermsView(), ephemeral=True)
     await view.wait()
     return view.itc
 
@@ -34,7 +34,7 @@ class TermsView(ui.View):
         self.stop()
 
     @ui.button(emoji="<:naogostei:1173824189682159689> ", label="Eu discordo", style=ButtonStyle.gray)
-    async def acept(self, itc: Interaction, button: ui.Button):
+    async def reject(self, itc: Interaction, button: ui.Button):
         emb = Embeds.red("<:seta4:1173824193176031253> O termo não foi aceito e você não poderá continuar com a sua ação.")
         await itc.response.edit_message(embed=emb)
         self.stop()

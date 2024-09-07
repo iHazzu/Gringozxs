@@ -14,4 +14,4 @@ async def iniciar_competicao(itc: Interaction):
     if itc.data["custom_id"] == "acept_terms":
         await itc.response.edit_message(embed=embed)
     else:
-        await itc.response.send_message(embed=embed)
+        await itc.response.send_message(embed=embed, ephemeral=True)
