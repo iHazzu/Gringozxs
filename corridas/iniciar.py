@@ -5,6 +5,7 @@ from discord import Embed
 
 async def iniciar_competicao(itc: Interaction):
     itc = await acept_terms(itc)
+    print(itc)
     if not itc:
         return
     embed = Embed(
