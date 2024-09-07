@@ -18,7 +18,9 @@ async def acept_terms(itc: Interaction) -> Optional[Interaction]:
         return itc
     view = TermsView()
     await itc.response.send_message(embeds=term_embeds, view=TermsView(), ephemeral=True)
+    print("waiting view")
     await view.wait()
+    print("done")
     return view.itc
 
 
