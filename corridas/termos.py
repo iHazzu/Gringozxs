@@ -17,10 +17,8 @@ async def acept_terms(itc: Interaction) -> Optional[Interaction]:
     if data[0][0]:
         return itc
     view = TermsView()
-    await itc.response.send_message(embeds=term_embeds, view=TermsView(), ephemeral=True)
-    print("waiting view")
+    await itc.response.send_message(embeds=term_embeds, view=view, ephemeral=True)
     await view.wait()
-    print("done")
     return view.itc
 
 
@@ -33,9 +31,7 @@ class TermsView(ui.View):
     async def acept(self, itc: Interaction, button: ui.Button):
         self.itc = itc
         await itc.client.db.set("INSERT INTO jogadores(discord_id) VALUES(%s)", itc.user.id)
-        print("added to db")
         self.stop()
-        print("stopped")
 
     @ui.button(emoji="<:naogostei:1173824189682159689> ", label="Eu discordo", style=ButtonStyle.gray)
     async def reject(self, itc: Interaction, button: ui.Button):
