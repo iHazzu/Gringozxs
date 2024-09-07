@@ -1,0 +1,61 @@
+Termos de Serviço e Licenciamento
+
+Termos de Serviço – Gringozxs
+
+1.Introdução
+1-a. Bem-vindo ao sistema de competição de corridas da Gringozxs. Ao usar nosso serviço, você concorda com estes Termos de Serviço. Caso não concorde, não utilize o serviço.
+2.Uso do Serviço
+2-a. Requisitos: Para participar, você deve estar em um chat de voz e gravar a corrida.
+2-b. Regras de Conduta: Comportamentos ofensivos, trapaças e qualquer uso inadequado do serviço são proibidos.
+2-c. Proibição de Uso Indevido: O serviço não deve ser usado para fins ilegais ou prejudiciais.
+3.Regras Adicionais Durante a Competição
+3-a. Vantagens Justas: Se um jogador possui Nitro, todos os participantes devem ter Nitro. Caso contrário, a corrida não será válida.
+3-b. Tuning de Carros: Se um jogador realiza tuning no carro, todos os participantes devem fazer o mesmo. Se a maioria concordar em permitir tuning diferente, deve ser registrado no clipe da corrida.
+3-c. Carros: Todos os participantes devem usar o mesmo modelo de carro. Se algum jogador quiser usar um carro diferente, todos os participantes devem concordar. Isso deve ser documentado no clipe da corrida.
+3-d. Servidor de Corrida: Recomendamos que o servidor utilizado para as corridas seja próprio para competições de fuga. Caso tenha dúvidas, abra um ticket para suporte.
+3-e. Nomes Fakes: Nomes fictícios não serão aceitos na hora de adicionar os participantes. Todos devem usar nomes reais.
+3-f. Avaliação: A avaliação da competição levará em consideração todas as regras acima. Infrações podem resultar em desqualificação.
+3-g. Comportamento Durante a Corrida: Qualquer jogador que esteja batendo nos carros de propósito (“ratão”) ou cometendo outras infrações durante a competição deve ter seu clipe enviado ao suporte. Dependendo da situação, o jogador pode receber punições necessárias e até remoção de pontos.
+4.Conduta e Comportamento
+4-a. Proibição de Comportamento Ofensivo: Não toleramos xingamentos, racismo, homofobia, xenofobia ou qualquer forma de discriminação. Violar essas regras pode resultar em banimento imediato.
+4-b. Mutar Participantes: Durante a corrida, os participantes poderão estar mutados para evitar interrupções e garantir uma competição justa.
+5.Propriedade Intelectual e Direitos
+5-a. Conteúdo da Corrida: Os direitos sobre os vídeos e outros conteúdos gerados durante as corridas são propriedade da Gringozxs.
+5-b. Uso de Imagens e Vídeos: A Gringozxs reserva-se o direito de usar imagens e vídeos das corridas para fins promocionais.
+6.Modificações e Atualizações
+6-a. Alterações nos Termos: Estes termos podem ser atualizados periodicamente. A Gringozxs informará os participantes sobre quaisquer mudanças relevantes.
+6-b. Aceitação das Alterações: O uso contínuo do serviço após alterações aos termos constitui aceitação das novas condições.
+
+
+
+7.Responsabilidades e Limitações
+7-a. Responsabilidade pelo Equipamento: Os participantes são responsáveis pelo seu próprio equipamento e conexão.
+7-b. Isenção de Responsabilidade: A Gringozxs não é responsável por falhas técnicas ou problemas que possam ocorrer durante as competições.
+8.Política de Privacidade
+8-a. Dados Pessoais: Não coletamos informações pessoais. Nenhum dado pessoal é armazenado ou compartilhado.
+9.Uso Exclusivo
+9-a. Restrição de Uso: O sistema de competição é exclusivo para uso no servidor Discord Gringozxs e não pode ser utilizado em outros servidores.
+10.Disposições Gerais
+10-a. Juridição: Estes termos são regidos pelas leis do Brasil.
+10-b. Resolução de Conflitos: Qualquer disputa será resolvida conforme a legislação aplicável.
+11.Regras Adicionais Durante a Competição
+11-a. Participantes: Apenas membros ativos do servidor Discord Gringozxs podem participar das competições. Membros banidos ou suspensos não são elegíveis.
+11-b. Inscrição: Para participar, os jogadores devem se inscrever através do bot e aceitar os termos de serviço. Inscrições são aceitas até um determinado horário antes do início da competição.
+11-c. Compromisso: Ao se inscrever, o participante se compromete a seguir todas as regras e regulamentos da competição.
+11-d. Início e Término: As corridas devem começar e terminar conforme programado. Qualquer atraso ou mudança deve ser comunicado e aprovado pela equipe de suporte.
+11-e. Registro de Corridas: Todas as corridas devem ser gravadas e os clipes devem ser enviados conforme solicitado pelo bot para validação.
+11-f. Equipamento: Os participantes são responsáveis pelo seu próprio equipamento e conexão.
+11-g. Feedback: Participantes devem fornecer feedback após a competição. Comentários ofensivos não serão aceitos.
+11-h. Penalidades: Violações das regras podem resultar em penalidades, incluindo perda de pontos, desqualificação ou banimento do servidor. O processo de apelação está disponível para os participantes.
+12.Premiação Atualizada
+12-a. Premiação Mensal:
+•1º Lugar: R$150,00
+•2º Lugar: R$75,00
+•3º Lugar: R$50,00
+12-b. Observações:
+•O prêmio é concedido ao final de cada mês com base no ranking das competições.
+•Participantes devem estar atentos às regras para garantir a validade da competição e a elegibilidade para o prêmio.
+•Os prêmios são pagos em dinheiro e podem ser sujeitos a impostos conforme a legislação local.
+13.Disposições Finais
+13-a. Modificações: A Gringozxs reserva-se o direito de modificar ou encerrar o serviço a qualquer momento.
+13-b. Suspensão: Sua conta pode ser suspensa por violação destes termos.
