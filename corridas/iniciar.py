@@ -12,6 +12,6 @@ async def iniciar_competicao(itc: Interaction):
         description="<:seta4:1173824193176031253> Criei o canal #corrida-1 para prosseguirmos com a criação da sua corrida."
     )
     if itc.data["custom_id"] == "acept_terms":
-        await itc.response.edit_message(embed=embed)
+        await itc.response.edit_message(embed=embed, view=None)
     else:
         await itc.response.send_message(embed=embed, ephemeral=True)

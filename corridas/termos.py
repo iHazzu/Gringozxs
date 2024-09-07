@@ -36,5 +36,5 @@ class TermsView(ui.View):
     @ui.button(emoji="<:naogostei:1173824189682159689> ", label="Eu discordo", style=ButtonStyle.gray)
     async def reject(self, itc: Interaction, button: ui.Button):
         emb = Embeds.red("<:seta4:1173824193176031253> O termo não foi aceito e você não poderá continuar com a sua ação.")
-        await itc.response.edit_message(embed=emb)
+        await itc.response.edit_message(embed=emb, view=None)
         self.stop()
