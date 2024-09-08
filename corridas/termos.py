@@ -14,7 +14,7 @@ with open("corridas/termos_de_uso.txt", "r") as file:
 async def fetch_jog_id(itc: Interaction) -> Tuple[Optional[Interaction], Optional[int]]:
     bot = itc.client
     data = await bot.db.get("SELECT id FROM jogadores WHERE discord_id=%s", itc.user.id)
-    if data[0][0]:
+    if data:
         return itc, data[0][0]
     view = TermsView()
     await itc.response.send_message(embeds=term_embeds, view=view, ephemeral=True)
