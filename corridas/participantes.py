@@ -15,7 +15,7 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
 
 
 async def resposta(
-        channel: discord.abc.MessageableChannel,
+        channel: discord.abc.PartialMessageableChannel,
         user: discord.abc.Snowflake,
         bot: Bot
 ) -> discord.Message:
