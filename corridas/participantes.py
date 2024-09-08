@@ -1,6 +1,5 @@
 from core import Interaction, Bot
 import discord
-from typing import Union
 
 
 async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord.Thread):
