@@ -1,6 +1,7 @@
 from core import Interaction
 from .termos import fetch_jog_id
 from discord import Embed
+from participantes import obter_participantes
 
 
 async def iniciar_competicao(itc: Interaction):
@@ -19,3 +20,4 @@ async def iniciar_competicao(itc: Interaction):
         await itc.response.edit_message(embed=embed, view=None)
     else:
         await itc.response.send_message(embed=embed, ephemeral=True)
+    await obter_participantes(itc, corrida_id, thread)
