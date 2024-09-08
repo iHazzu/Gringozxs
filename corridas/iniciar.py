@@ -1,7 +1,7 @@
 from core import Interaction
 from .termos import fetch_jog_id
 from discord import Embed
-from participantes import obter_participantes
+from .participantes import obter_participantes
 
 
 async def iniciar_competicao(itc: Interaction):
