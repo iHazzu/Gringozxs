@@ -1,5 +1,6 @@
 from core import Interaction, Bot
 import discord
+from typing import Union
 
 
 async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord.Thread):
@@ -15,7 +16,7 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
 
 
 async def resposta(
-        channel: discord.abc.PartialMessageableChannel,
+        channel: discord.TextChannel | discord.Thread,
         user: discord.abc.Snowflake,
         bot: Bot
 ) -> discord.Message:
