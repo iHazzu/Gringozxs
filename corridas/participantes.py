@@ -20,7 +20,21 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
         await itc.response.edit_message(embed=emb, view=None)
     else:
         await itc.response.send_message(embed=emb, ephemeral=True)
-    msg = await resposta(thread, itc.user, bot)
+
+    while True:
+        msg = await resposta(thread, itc.user, bot)
+        participantes = msg.mentions
+        if itc.user in participantes:
+            participantes.remove(itc.user)
+        participantes.insert(0, itc.user)
+        if len(participantes) > 1:
+            break
+        else:
+            emb = discord.Embed(
+                colour=0x2F3136,
+                description=f"<:icons_discordmod:1279250675192172576> Mencione pelo menos um adversário para a competição."
+            )
+            await msg.reply(embed=emb)
 
 
 async def resposta(
