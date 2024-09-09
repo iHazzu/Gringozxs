@@ -1,4 +1,4 @@
-from core import Interaction, Embeds
+from core import Interaction
 from typing import Optional, Tuple
 from discord import ui, ButtonStyle, Embed
 
@@ -37,6 +37,9 @@ class TermsView(ui.View):
 
     @ui.button(emoji="<:naogostei:1173824189682159689> ", label="Eu discordo", style=ButtonStyle.gray)
     async def reject(self, itc: Interaction, button: ui.Button):
-        emb = Embeds.red("<:seta4:1173824193176031253> O termo não foi aceito e você não poderá continuar com a sua ação.")
+        emb = Embed(
+            colour=0x265aed,
+            description="<:naogostei:1173824189682159689> O termo não foi aceito e você não poderá continuar com a sua ação."
+        )
         await itc.response.edit_message(embed=emb, view=None)
         self.stop()

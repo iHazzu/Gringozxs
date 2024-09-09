@@ -6,11 +6,20 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
     bot = itc.client
     emb = discord.Embed(
         colour=0x2F3136,
-        description=f"<:seta4:1173824193176031253> Envie uma mensagem mencionando o(s) outro(s) participante(s)"
+        description=f"<:seta4:1173824193176031253> Envie uma mensagem mencionando o(s) outro(s) participante(s) "
                     f"desta competição:"
     )
     emb.set_author(name="Participantes da Competicão", icon_url=itc.guild.icon.url)
     await thread.send(content=itc.user.mention,  embed=emb)
+    emb = discord.Embed(
+        colour=0x2F3136,
+        description=f"<:seta4:1173824193176031253> Criei o canal {thread.mention} "
+                    f"para prosseguirmos com a criação da sua corrida."
+    )
+    if itc.data["custom_id"] == "acept_terms":
+        await itc.response.edit_message(embed=emb, view=None)
+    else:
+        await itc.response.send_message(embed=emb, ephemeral=True)
     msg = await resposta(thread, itc.user, bot)
 
 
