@@ -1,14 +1,11 @@
 from core import Interaction
 from typing import Optional, Tuple
 from discord import ui, ButtonStyle, Embed
+import json
 
 
-term_embeds = []
-with open("corridas/termos_de_uso.txt", "r") as file:
-    parts = file.read().split("\n\n\n")
-    for p in parts:
-        embed = Embed(colour=0x2F3136, description=p)
-        term_embeds.append(embed)
+with open("corridas/termos_embed.json") as file:
+    termos_emb = Embed.from_dict(json.load(file))
 
 
 async def fetch_jog_id(itc: Interaction) -> Tuple[Optional[Interaction], Optional[int]]:
@@ -17,7 +14,7 @@ async def fetch_jog_id(itc: Interaction) -> Tuple[Optional[Interaction], Optiona
     if data:
         return itc, data[0][0]
     view = TermsView()
-    await itc.response.send_message(embeds=term_embeds, view=view, ephemeral=True)
+    await itc.response.send_message(embed=termos_emb, view=view, ephemeral=True)
     await view.wait()
     return view.itc, view.jog_id
 

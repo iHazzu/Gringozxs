@@ -32,7 +32,7 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
         else:
             emb = discord.Embed(
                 colour=0x2F3136,
-                description=f"<:icons_discordmod:1279250675192172576> Mencione pelo menos um adversário para a competição."
+                description=f"<:icons_discordmod:1279250675192172576> Mencione pelo menos um adversário para a competição:"
             )
             await msg.reply(embed=emb)
 
@@ -48,5 +48,4 @@ async def resposta(
                 return True
         return False
     msg = await bot.wait_for('message', check=check, timeout=600)
-    await msg.add_reaction("<:icons_like:1279250706208919644>")
     return msg
