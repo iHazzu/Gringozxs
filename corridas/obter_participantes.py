@@ -1,8 +1,9 @@
-from core import Interaction, Bot
+from core import Interaction, Bot, Corrida, Participante
 import discord
+from .confirmar_corrida import confirmacao
 
 
-async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord.Thread):
+async def obter_participantes(itc: Interaction, run: Corrida):
     bot = itc.client
     emb = discord.Embed(
         colour=0x2F3136,
@@ -10,10 +11,10 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
                     f"desta competição:"
     )
     emb.set_author(name="Participantes da Competicão", icon_url=itc.guild.icon.url)
-    await thread.send(content=itc.user.mention,  embed=emb)
+    await run.canal.send(content=itc.user.mention,  embed=emb)
     emb = discord.Embed(
         colour=0x2F3136,
-        description=f"<:seta4:1173824193176031253> Criei o canal {thread.mention} "
+        description=f"<:seta4:1173824193176031253> Criei o canal {run.canal.mention} "
                     f"para prosseguirmos com a criação da sua corrida."
     )
     if itc.data["custom_id"] == "acept_terms":
@@ -22,7 +23,7 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
         await itc.response.send_message(embed=emb, ephemeral=True)
 
     while True:
-        msg = await resposta(thread, itc.user, bot)
+        msg = await resposta(run.canal, itc.user, bot)
         participantes = msg.mentions
         if itc.user in participantes:
             participantes.remove(itc.user)
@@ -35,6 +36,9 @@ async def obter_participantes(itc: Interaction, corrida_id: int, thread: discord
                 description=f"<:icons_discordmod:1279250675192172576> Mencione pelo menos um adversário para a competição:"
             )
             await msg.reply(embed=emb)
+    for member in participantes:
+        run.participantes.append(Participante(member))
+    await confirmacao(bot, run)
 
 
 async def resposta(

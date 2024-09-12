@@ -1,8 +1,8 @@
 from .bot import Bot
-from .pagination import Pagination
 from .database import DataBase
 from .constants import *
 from .errors import *
+from .models import Participante, Corrida
 from discord.ext import commands
 import discord
 
