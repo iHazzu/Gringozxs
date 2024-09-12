@@ -11,4 +11,4 @@ async def iniciar_competicao(itc: Interaction):
     corrida_id = data[0][0]
     thread = await itc.channel.create_thread(name=f"Corrida {corrida_id}", invitable=True)
     corrida = Corrida(corrida_id, itc.user, thread)
-    await obter_participantes(itc, corrida_id, thread)
+    await obter_participantes(itc, corrida)
