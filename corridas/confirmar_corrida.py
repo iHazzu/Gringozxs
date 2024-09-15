@@ -2,7 +2,7 @@ from discord import ui, ButtonStyle, Embed
 from discord.utils import get
 from core import Interaction, Bot, Corrida, Embeds
 from .termos import fetch_jog_id
-from .realizar_corrida import salvar
+from .realizar_corrida import realizar
 
 
 async def confirmacao(bot: Bot, run: Corrida):
@@ -17,7 +17,7 @@ async def confirmacao(bot: Bot, run: Corrida):
         return
     view.children[0].disabled = True
     await msg.edit(view=None)
-    await salvar(bot, run)
+    await realizar(bot, run)
 
 
 class ConfirmarCorrida(ui.View):
