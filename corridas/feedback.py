@@ -14,7 +14,7 @@ async def feedback_corrida(itc: Interaction):
     corrida_id = int(emb.title.split(" ")[-2])
     member_ids = await bot.db.get('''
         SELECT j.discord_id
-        FROM jogadores
+        FROM jogadores j
         INNER JOIN participantes p ON p.jogador_id=j.id
         WHERE p.corrida_id=%s AND j.discord_id != %s
     ''', corrida_id, itc.user.id)
