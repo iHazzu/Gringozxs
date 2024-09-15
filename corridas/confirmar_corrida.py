@@ -1,22 +1,23 @@
 from discord import ui, ButtonStyle, Embed
 from discord.utils import get
-from core import Interaction, Bot, Corrida
+from core import Interaction, Bot, Corrida, Embeds
 from .termos import fetch_jog_id
+from .realizar_corrida import salvar
 
 
 async def confirmacao(bot: Bot, run: Corrida):
-    emb = Embed(
-        colour=0x2F3136,
-        description=f"A corrida será iniciada quando todos os participantes clicarem no botão abaixo.\n\n"
-    )
+    emb = Embeds.invisible("A corrida será iniciada quando todos os participantes clicarem no botão abaixo.\n\n")
     for p in run.participantes:
         emb.description += f"<:icons_reminder:1279271795752435714> {p.member.mention}\n"
     emb.description += "\n<:seta4:1173824193176031253> Antes de confirmar a corrida, verifique se você esta em um "
     emb.description += "chat de voz e se você esta pronto para começar a gravar."
     view = ConfirmarCorrida(run)
-    await run.canal.send(embed=emb, view=view)
+    msg = await run.canal.send(embed=emb, view=view)
     if await view.wait():
         return
+    view.children[0].disabled = True
+    await msg.edit(view=None)
+    await salvar(bot, run)
 
 
 class ConfirmarCorrida(ui.View):
@@ -27,10 +28,9 @@ class ConfirmarCorrida(ui.View):
 
     async def interaction_check(self, itc: Interaction) -> bool:
         if itc.user not in self.a_confirmar:
-            emb = Embed(
-                colour=0x2F3136,
-                description=f"<:icons_discordmod:1279250675192172576> Você já confirmou a corrida. Aguarde até que "
-                            f"os demais participantes também confirmem."
+            emb = Embeds.invisible(
+                "<:icons_discordmod:1279250675192172576> Você já confirmou a corrida. "
+                "Aguarde até que os demais participantes também confirmem."
             )
             await itc.response.send_message(embed=emb, ephemeral=True)
             return False
@@ -55,7 +55,7 @@ class ConfirmarCorrida(ui.View):
         emb.description = "\n\n".join(parts)
         if itc2.data["custom_id"] == "acept_terms":
             emb_terms = Embed(colour=0x265aed, description="<:gostei:1173824190885937182> Você confirmou a corrida.")
-            await itc2.response.edit_message(embed=emb_terms)
+            await itc2.response.edit_message(embed=emb_terms, view=None)
             await itc.message.edit(embed=emb)
         else:
             await itc.response.edit_message(embed=emb)

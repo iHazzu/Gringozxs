@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from core import Context, Bot, handle_error, setup_logging, Interaction
 from utils import UtilsCog
-from corridas import CorridasCog, iniciar_competicao
+from corridas import CorridasCog, iniciar_competicao, feedback_corrida
 from os import environ as env
 import asyncio
 
@@ -29,6 +29,9 @@ async def on_interaction(itc: Interaction):
         return
     if custom_id == "iniciar_competicao":
         await iniciar_competicao(itc)
+    elif custom_id == "feedback_corrida":
+        await feedback_corrida(itc)
+
 
 
 # running

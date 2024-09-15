@@ -1,14 +1,12 @@
-from core import Interaction, Bot, Corrida, Participante
+from core import Interaction, Bot, Corrida, Participante, Embeds
 import discord
 from .confirmar_corrida import confirmacao
 
 
 async def obter_participantes(itc: Interaction, run: Corrida):
     bot = itc.client
-    emb = discord.Embed(
-        colour=0x2F3136,
-        description=f"<:seta4:1173824193176031253> Envie uma mensagem mencionando o(s) outro(s) participante(s) "
-                    f"desta competição:"
+    emb = Embeds.invisible(
+        "<:seta4:1173824193176031253> Envie uma mensagem mencionando o(s) outro(s) participante(s) desta competição:"
     )
     emb.set_author(name="Participantes da Competicão", icon_url=itc.guild.icon.url)
     await run.canal.send(content=itc.user.mention,  embed=emb)
@@ -31,9 +29,8 @@ async def obter_participantes(itc: Interaction, run: Corrida):
         if len(participantes) > 1:
             break
         else:
-            emb = discord.Embed(
-                colour=0x2F3136,
-                description=f"<:icons_discordmod:1279250675192172576> Mencione pelo menos um adversário para a competição:"
+            emb = Embeds.invisible(
+                "<:icons_discordmod:1279250675192172576> Mencione pelo menos um adversário para a competição:"
             )
             await msg.reply(embed=emb)
     for member in participantes:

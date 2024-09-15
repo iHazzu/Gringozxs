@@ -3,6 +3,7 @@ from core import Context, Bot, is_bot_admin
 from discord.ext import tasks
 from . import msg_competicao
 from .iniciar import iniciar_competicao
+from .feedback import feedback_corrida
 
 
 class CorridasCog(commands.Cog):

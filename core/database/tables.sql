@@ -9,6 +9,7 @@ CREATE TABLE corridas(
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	criador_id INT REFERENCES jogadores(id) ON DELETE SET NULL,
 	criado_em TIMESTAMP DEFAULT current_timestamp,
+	canal_id BIGINT NOT NULL,
 	resultado TEXT
 );
 

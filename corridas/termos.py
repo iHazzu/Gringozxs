@@ -32,7 +32,7 @@ class TermsView(ui.View):
         self.jog_id = data[0][0]
         self.stop()
 
-    @ui.button(emoji="<:naogostei:1173824189682159689> ", label="Eu discordo", style=ButtonStyle.gray)
+    @ui.button(emoji="<:naogostei:1173824189682159689>", label="Eu discordo", style=ButtonStyle.gray)
     async def reject(self, itc: Interaction, button: ui.Button):
         emb = Embed(
             colour=0x265aed,
