@@ -15,7 +15,7 @@ async def realizar(bot: Bot, run: Corrida):
     )
     for p in run.participantes:
         emb.description += f"<:icons_reminder:1279271795752435714> {p.member.mention}\n"
-    emb.description += f"\n\n<:seta4:1173824193176031253> A corrida finaliza em {show_time}. Caso algum jogador não "
+    emb.description += f"\n<:seta4:1173824193176031253> A corrida finaliza em {show_time}. Caso algum jogador não "
     emb.description += f"envie o clipe e o resultado através do botao abaixo, a competição será anulada."
     view = CorridaView(run)
     msg = await run.canal.send(embed=emb, view=view)
@@ -68,17 +68,17 @@ class CorridaView(ui.View):
                 f"<:icons_discordmod:1279250675192172576> A posição `{modal.posicao_field.value}` inserida "
                 f"não é um número."
             )
-            return await itc.response.send_message(embed=emb, ephemeral=True)
+            return await modal.itc.response.send_message(embed=emb, ephemeral=True)
         if posicao > len(self.run.participantes):
             emb = Embeds.invisible(f"<:icons_discordmod:1279250675192172576> Posição `{posicao}` inexistente.")
-            return await itc.response.send_message(embed=emb, ephemeral=True)
+            return await modal.itc.response.send_message(embed=emb, ephemeral=True)
         for p in self.run.participantes:
             if p.member != itc.user and p.posicao == posicao:
                 emb = Embeds.invisible(
                     f"<:icons_discordmod:1279250675192172576> O jogador {p.member.mention} já alegou estar na "
                     f"posição `{posicao}`. Vocês devem entrar em um consenso."
                 )
-                return await itc.response.send_message(embed=emb, ephemeral=True)
+                return await modal.itc.response.send_message(embed=emb, ephemeral=True)
         participante = utils.get(self.run.participantes, member=itc.user)
         participante.posicao = posicao
         participante.clipe = modal.clipe_field.value
@@ -101,7 +101,8 @@ class CorridaView(ui.View):
 class InformacoesForm(ui.Modal):
     clipe_field = ui.TextInput(
         label="Insira o link para o seu clipe da partida:",
-        style=TextStyle.paragraph,
+        style=TextStyle.short,
+        placeholder="https://...",
         required=True
     )
     posicao_field = ui.TextInput(
@@ -114,7 +115,7 @@ class InformacoesForm(ui.Modal):
     def __init__(self, max_posicao: int):
         self.itc: Optional[Interaction] = None
         self.posicao_field.placeholder = f"De 1 a {max_posicao}..."
-        super().__init__(title=f"DADOS DA COMPETIÇÃO", timeout=100)
+        super().__init__(title=f"DADOS DA COMPETIÇÃO", timeout=120)
 
     async def on_submit(self, itc: Interaction):
         self.itc = itc
