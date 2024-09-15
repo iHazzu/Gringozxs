@@ -23,7 +23,7 @@ async def feedback_corrida(itc: Interaction):
         f"O usuário {itc.user.mention} deixou um feedback para os jogadores que participaram da corrida com ele.\n\n"
         f">>> {modal.feedback_field.value}"
     )
-    mentions = "-" + "\n-".join([f" <@{m_id}>" for m_id in member_ids])
+    mentions = "-" + "\n-".join([f" <@{m_id[0]}>" for m_id in member_ids])
     emb.add_field(name="Feedback para:", value=mentions, inline=False)
     channel = bot.get_channel(1281236640085442602)
     await channel.send(embed=emb)
