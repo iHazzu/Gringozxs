@@ -13,4 +13,10 @@ class CorridasCog(commands.Cog):
 
     @tasks.loop(hours=15)
     async def reenviar_msg_competicao(self):
+        if not self.reenviar_msg_competicao.current_loop:
+            return
         await msg_competicao.reenviar(self.bot)
+
+    @reenviar_msg_competicao.before_loop
+    async def wait_ready(self):
+        await self.bot.wait_until_ready()
