@@ -1,5 +1,5 @@
 from core import Bot, Corrida, Interaction, Embeds
-from discord import utils, ui, ButtonStyle, TextStyle, Embed
+from discord import utils, ui, ButtonStyle, TextStyle
 from datetime import timedelta
 from typing import Optional
 from asyncio import wait_for, TimeoutError
@@ -9,10 +9,9 @@ from .salvar_corrida import salvar
 async def realizar(bot: Bot, run: Corrida):
     end_time = utils.utcnow() + timedelta(minutes=15, seconds=30)
     show_time = utils.format_dt(end_time, "R")
-    emb = Embed(
-        colour=0x265aed,
-        description="A competição de vocês começou, então prepare o seu nitro, "
-                    "aqueça seu carro que a partida começooooooooooou! 🏁.\n\n"
+    emb = Embeds.blue(
+        "A competição de vocês começou, então prepare o seu nitro, "
+        "aqueça seu carro que a partida começooooooooooou! 🏁.\n\n"
     )
     for p in run.participantes:
         emb.description += f"<:icons_reminder:1279271795752435714> {p.member.mention}\n"

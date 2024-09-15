@@ -19,7 +19,7 @@ class Embeds:
 
     @classmethod
     def blue(cls, description: str = "") -> discord.Embed:
-        return discord.Embed(colour=52479, description=description)
+        return discord.Embed(colour=2513645, description=description)
 
     @classmethod
     def invisible(cls, description: str = "") -> discord.Embed:

@@ -9,12 +9,12 @@ async def salvar(bot: Bot, run: Corrida):
             VALUES (%s, %s, %s, %s)
         ''', p.jog_id, run.id, p.posicao, p.clipe)
     emb = Embeds.invisible(
-        f"## Competição {run.id}"
+        f"### Competição {run.id}\nUma nova competição acaba de ser registrada."
     )
     run.participantes = sorted(run.participantes, key=lambda x: x.posicao)
     v = "\n".join([f"{p.posicao}. {p.member.mention} [clipe]({p.clipe})" for p in run.participantes])
     emb.add_field(name="Canal", value=f"<:seta4:1173824193176031253> {run.canal.mention}", inline=False)
-    emb.add_field(name="Resultado", value=f"<:seta4:1173824193176031253> {v}", inline=False)
+    emb.add_field(name="Resultado", value=v, inline=False)
     view = ui.View(timeout=None)
     view.add_item(ui.Button(
         emoji="<:gostei:1173824190885937182>", label="Aprovar",
@@ -27,7 +27,7 @@ async def salvar(bot: Bot, run: Corrida):
     channel = bot.get_channel(MOD_CHANNEL_ID)
     await channel.send(embed=emb, view=view)
 
-    emb = Embeds.invisible(
+    emb = Embeds.blue(
         "<:seta4:1173824193176031253> A nossa Moderação recebeu as informações da competição e ela esta em análise. "
         "Vocês serão notificados quando o resultado sair.\n\n"
         "<:seta4:1173824193176031253> Enquanto aguardam o resultado, deixem um feedback "

@@ -1,4 +1,4 @@
-from discord import ui, ButtonStyle, Embed
+from discord import ui, ButtonStyle
 from discord.utils import get
 from core import Interaction, Bot, Corrida, Embeds
 from .termos import fetch_jog_id
@@ -54,7 +54,7 @@ class ConfirmarCorrida(ui.View):
         parts[1] = "\n".join(lines)
         emb.description = "\n\n".join(parts)
         if itc2.data["custom_id"] == "acept_terms":
-            emb_terms = Embed(colour=0x265aed, description="<:gostei:1173824190885937182> Você confirmou a corrida.")
+            emb_terms = Embeds.blue("<:gostei:1173824190885937182> Você confirmou a corrida.")
             await itc2.response.edit_message(embed=emb_terms, view=None)
             await itc.message.edit(embed=emb)
         else:
