@@ -88,7 +88,7 @@ class CorridaView(ui.View):
         lines = []
         for p in self.run.participantes:
             if p.posicao:
-                line = f"<:gostei:1173824190885937182> {p.member.mention} ({posicao}°)"
+                line = f"<:gostei:1173824190885937182> {p.member.mention} ({p.posicao}°)"
             else:
                 line = f"<:icons_reminder:1279271795752435714> {p.member.mention}"
             lines.append(line)

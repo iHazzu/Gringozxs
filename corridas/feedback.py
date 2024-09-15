@@ -33,7 +33,7 @@ async def feedback_corrida(itc: Interaction):
 
 class FeedbackForm(ui.Modal):
     feedback_field = ui.TextInput(
-        label="Seu feedback para os demais jogadores da partida:",
+        label="Seu feedback para os demais jogadores:",
         style=TextStyle.paragraph,
         max_length=1000,
         required=True

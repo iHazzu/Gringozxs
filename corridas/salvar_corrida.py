@@ -33,7 +33,7 @@ async def salvar(bot: Bot, run: Corrida):
         "<:seta4:1173824193176031253> Enquanto aguardam o resultado, deixem um feedback "
         "para os players da partidas clicando no botão abaixo."
     )
-    emb.title = f"### <:sinoo:1173824189036245073> Corrida {run.id} Registrada"
+    emb.title = f"<:sinoo:1173824189036245073> Corrida {run.id} Registrada"
     view2 = ui.View(timeout=None)
     view2.add_item(ui.Button(
         emoji="<:chat:1173824187845062707>", label="Feedback",
