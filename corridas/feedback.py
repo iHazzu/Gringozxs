@@ -20,7 +20,7 @@ async def feedback_corrida(itc: Interaction):
     ''', corrida_id, itc.user.id)
     emb = Embeds.invisible(
         f"### Novo Feedback\n"
-        f"O usuário {itc.user.mention} deixou um feedback para os jogadores que participaram da corrida com ele.\n\n"
+        f"O usuário {itc.user.mention} deixou um feedback para os jogadores que participaram da corrida com ele.\n"
         f">>> {modal.feedback_field.value}"
     )
     mentions = "-" + "\n-".join([f" <@{m_id[0]}>" for m_id in member_ids])
