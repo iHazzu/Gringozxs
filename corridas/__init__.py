@@ -13,6 +13,7 @@ class CorridasCog(commands.Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
         self.reenviar_msg_competicao.start()
+        self.atualizar_ranking_loop.start()
 
     @tasks.loop(hours=15)
     async def reenviar_msg_competicao(self):
