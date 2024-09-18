@@ -22,10 +22,10 @@ async def reprovar_corrida(itc: Interaction):
 
     data = await bot.db.get('''
         UPDATE corridas
-        SET resultado='REPROVADA'
+        SET resultado=%s
         WHERE id=%s
         RETURNING canal_id
-    ''', corrida_id)
+    ''', f"REPROVADA,{motivo}", corrida_id)
     thread = bot.get_channel(data[0][0])
     emb = Embeds.red(
         "### <:naogostei:1173824189682159689> Corrida Reprovada\n"
