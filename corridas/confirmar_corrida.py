@@ -22,7 +22,7 @@ async def confirmacao(bot: Bot, run: Corrida):
 
 class ConfirmarCorrida(ui.View):
     def __init__(self, run: Corrida):
-        super().__init__(timeout=300)
+        super().__init__(timeout=600)
         self.run = run
         self.a_confirmar = [p.member for p in run.participantes]
 

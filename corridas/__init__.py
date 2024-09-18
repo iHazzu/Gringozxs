@@ -4,6 +4,8 @@ from discord.ext import tasks
 from . import msg_competicao
 from .iniciar import iniciar_competicao
 from .feedback import feedback_corrida
+from .staff_reprovar import reprovar_corrida
+from .staff_aprovar import aprovar_corrida
 
 
 class CorridasCog(commands.Cog):

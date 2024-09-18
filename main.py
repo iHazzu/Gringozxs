@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from core import Context, Bot, handle_error, setup_logging, Interaction
 from utils import UtilsCog
-from corridas import CorridasCog, iniciar_competicao, feedback_corrida
+import corridas
 from os import environ as env
 import asyncio
 
@@ -28,10 +28,13 @@ async def on_interaction(itc: Interaction):
     if not custom_id:
         return
     if custom_id == "iniciar_competicao":
-        await iniciar_competicao(itc)
+        await corridas.iniciar_competicao(itc)
     elif custom_id == "feedback_corrida":
-        await feedback_corrida(itc)
-
+        await corridas.feedback_corrida(itc)
+    elif custom_id == "aprovar_corrida":
+        await corridas.aprovar_corrida(itc)
+    elif custom_id == "reprovar_corrida":
+        await corridas.reprovar_corrida(itc)
 
 
 # running
@@ -43,7 +46,7 @@ async def main():
     try:
         # commands categories
         await bot.add_cog(UtilsCog(bot=bot))
-        await bot.add_cog(CorridasCog(bot=bot))
+        await bot.add_cog(corridas.CorridasCog(bot=bot))
 
         await bot.start(env["DISCORD_BOT_TOKEN"])   # conecting bot
     finally:
