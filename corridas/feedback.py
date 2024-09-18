@@ -12,7 +12,7 @@ async def feedback_corrida(itc: Interaction):
         FROM participantes p
         INNER JOIN jogadores j ON j.id=p.jogador_id
         WHERE p.corrida_id=%s AND j.discord_id=%s
-    ''')
+    ''', corrida_id, itc.user.id)
     if data[0][1]:
         emb = Embeds.invisible(f"<:icons_discordmod:1279250675192172576> Você já deixou um feedback para esta competição.")
         return await itc.response.send_message(embed=emb, ephemeral=True)
