@@ -18,5 +18,6 @@ CREATE TABLE participantes(
     corrida_id INT NOT NULL REFERENCES corridas(id) ON DELETE CASCADE,
     pontos INT DEFAULT 0,
     clipe TEXT NOT NULL,
-    posicao INT NOT NULL
+    posicao INT NOT NULL,
+    gave_feedback BOOL DEFAULT False
 );
