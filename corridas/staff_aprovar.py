@@ -6,7 +6,7 @@ from typing import Optional
 async def aprovar_corrida(itc: Interaction):
     bot = itc.client
     emb = itc.message.embeds[0]
-    corrida_id = int(emb.title.split(" ")[-1])
+    corrida_id = int(emb.description.split("\n")[0].split(" ")[-1])
     jogs_data = await bot.db.get('''
         SELECT j.id, j.discord_id
         FROM jogadores j

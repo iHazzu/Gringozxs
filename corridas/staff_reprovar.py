@@ -11,7 +11,7 @@ async def reprovar_corrida(itc: Interaction):
     if not modal.itc:
         return
     emb = itc.message.embeds[0]
-    corrida_id = int(emb.title.split(" ")[-1])
+    corrida_id = int(emb.description.split("\n")[0].split(" ")[-1])
     emb.add_field(
         name="Julgamento",
         value=f"Reprovada por {itc.user.mention}\n>>> {modal.motivo_field.value}"
