@@ -47,7 +47,7 @@ async def aprovar_corrida(itc: Interaction):
         "A corrida de vocês foi aprovada pela staff. Confiram a pontuação que cada jogador recebeu:\n"
     )
     for i, d in enumerate(jogs_data):
-        emb.description += f"{i+1}. <@{d[1]}>: **{points[i]}** pts\n"
+        emb.description += f"{i+1}. <@{d[1]}>: {points[i]} pts\n"
     await thread.send(content="@here", embed=emb)
 
 

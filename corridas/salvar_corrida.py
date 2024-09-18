@@ -9,7 +9,7 @@ async def salvar(bot: Bot, run: Corrida):
             VALUES (%s, %s, %s, %s)
         ''', p.jog_id, run.id, p.posicao, p.clipe)
     emb = Embeds.invisible(
-        f"### Competição {run.id}\nUma nova competição acaba de ser registrada."
+        f"### Competição {run.id}\nUma nova competição foi registrada."
     )
     run.participantes = sorted(run.participantes, key=lambda x: x.posicao)
     v = "\n".join([f"{p.posicao}. {p.member.mention} [clipe]({p.clipe})" for p in run.participantes])
