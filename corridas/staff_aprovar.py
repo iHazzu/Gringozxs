@@ -48,7 +48,7 @@ async def aprovar_corrida(itc: Interaction):
     )
     for i, d in enumerate(jogs_data):
         emb.description += f"{i+1}. <@{d[1]}>: {points[i]} pts\n"
-    await thread.send(content="@here", embed=emb)
+    await thread.send(content="@everyone", embed=emb)
 
 
 class AprovarForm(ui.Modal):

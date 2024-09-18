@@ -25,7 +25,7 @@ async def reprovar_corrida(itc: Interaction):
         "### <:naogostei:1173824189682159689> Corrida Reprovada\n"
         f"A corrida de vocês foi reprovada pela staff. Motivo da reprovação:\n>>> {modal.motivo_field.value}"
     )
-    await thread.send(content="@here", embed=emb)
+    await thread.send(content="@everyone", embed=emb)
 
 
 class ReprovarForm(ui.Modal):
