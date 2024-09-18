@@ -38,7 +38,7 @@ async def aprovar_corrida(itc: Interaction):
         value=f"Aprovada por {itc.user.mention}\nPontuações: `{modal.points_field.value}`"
     )
     emb.colour = 3853362
-    await modal.response.edit_message(embed=emb, view=None)
+    await modal.itc.response.edit_message(embed=emb, view=None)
 
     data = await bot.db.get("SELECT canal_id FROM corridas WHERE id=%s", corrida_id)
     thread = bot.get_channel(data[0][0])

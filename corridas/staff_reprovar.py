@@ -17,7 +17,7 @@ async def reprovar_corrida(itc: Interaction):
         value=f"Reprovada por {itc.user.mention}\n>>> {modal.motivo_field.value}"
     )
     emb.colour = 16711680
-    await modal.response.edit_message(embed=emb, view=None)
+    await modal.itc.response.edit_message(embed=emb, view=None)
 
     data = await bot.db.get("SELECT canal_id FROM corridas WHERE id=%s", corrida_id)
     thread = bot.get_channel(data[0][0])
