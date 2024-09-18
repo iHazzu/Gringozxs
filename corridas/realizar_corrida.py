@@ -114,7 +114,7 @@ class InformacoesForm(ui.Modal):
 
     def __init__(self, max_posicao: int):
         self.itc: Optional[Interaction] = None
-        self.posicao_field.placeholder = f"De 1 a {max_posicao}..."
+        self.posicao_field.placeholder = f"De 1 a {max_posicao}"
         super().__init__(title=f"DADOS DA COMPETIÇÃO", timeout=120)
 
     async def on_submit(self, itc: Interaction):
