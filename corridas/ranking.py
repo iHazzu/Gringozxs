@@ -19,7 +19,7 @@ async def update_ranking(bot: Bot):
         LIMIT 10
     ''', start_date)
     emb = discord.Embed(
-        description="### <:icons_owner:1279271761287839836> Melhores P1s do Mês\n",
+        description="### <:icons_shine1:1279271814270550168> Melhores P1s do Mês\n",
         colour=16763904
     )
     for i, d in enumerate(data):

@@ -35,7 +35,7 @@ async def aprovar_corrida(itc: Interaction):
     await bot.db.set(query)
     emb.add_field(
         name="Julgamento",
-        value=f"Aprovada por {itc.user.mention}\nPontuações: {modal.points_field.value}"
+        value=f"Aprovada por {itc.user.mention}\nPontuações: `{modal.points_field.value}`"
     )
     emb.colour = 3853362
     await modal.itc.response.edit_message(embed=emb, view=None)
@@ -43,7 +43,7 @@ async def aprovar_corrida(itc: Interaction):
     data = await bot.db.get("SELECT canal_id FROM corridas WHERE id=%s", corrida_id)
     thread = bot.get_channel(data[0][0])
     emb = Embeds.green(
-        "### <:gostei:1173824190885937182> Corrida Aprova\n"
+        "### <:gostei:1173824190885937182> Corrida Aprovada\n"
         "A corrida de vocês foi aprovada pela staff. Confiram a pontuação que cada jogador recebeu:\n"
     )
     for i, d in enumerate(jogs_data):
