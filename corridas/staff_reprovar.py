@@ -14,8 +14,9 @@ async def reprovar_corrida(itc: Interaction):
     emb = itc.message.embeds[0]
     corrida_id = int(emb.description.split("\n")[0].split(" ")[-1])
     emb.add_field(
-        name="Julgamento",
-        value=f"Reprovada por {itc.user.mention}\n>>> {motivo}"
+        name="Reprovada",
+        value=f"Moderador: {itc.user.mention}\n>>> {motivo}",
+        inline=False
     )
     emb.colour = 16711680
     await modal.itc.response.edit_message(embed=emb, view=None)

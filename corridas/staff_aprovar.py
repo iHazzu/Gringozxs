@@ -34,8 +34,9 @@ async def aprovar_corrida(itc: Interaction):
     query += f"UPDATE corridas SET resultado='APROVADA' WHERE id={corrida_id}"
     await bot.db.set(query)
     emb.add_field(
-        name="Julgamento",
-        value=f"Aprovada por {itc.user.mention}\nPontuações: `{modal.points_field.value}`"
+        name="Aprovada",
+        value=f"Moderador: {itc.user.mention}\nPontuações: `{modal.points_field.value}`",
+        inline=False
     )
     emb.colour = 3853362
     await modal.itc.response.edit_message(embed=emb, view=None)
