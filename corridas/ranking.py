@@ -25,7 +25,7 @@ async def update_ranking(bot: Bot):
     for i, d in enumerate(data):
         emb.description += f"{i+1}. <@{d[0]}>: {d[1]} pts / {d[2]} runs\n"
     msg = await load_rank_message(bot)
-    emb.set_footer(text="Ranking atualizado a cada 5 mins", icon_url=msg.guild.icon.url)
+    emb.set_footer(text="Ranking atualizado a cada 5 min", icon_url=msg.guild.icon.url)
     await msg.edit(embed=emb)
 
 
