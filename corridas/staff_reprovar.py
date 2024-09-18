@@ -10,20 +10,26 @@ async def reprovar_corrida(itc: Interaction):
     await modal.wait()
     if not modal.itc:
         return
+    motivo = modal.motivo_field.value
     emb = itc.message.embeds[0]
     corrida_id = int(emb.description.split("\n")[0].split(" ")[-1])
     emb.add_field(
         name="Julgamento",
-        value=f"Reprovada por {itc.user.mention}\n>>> {modal.motivo_field.value}"
+        value=f"Reprovada por {itc.user.mention}\n>>> {motivo}"
     )
     emb.colour = 16711680
     await modal.itc.response.edit_message(embed=emb, view=None)
 
-    data = await bot.db.get("SELECT canal_id FROM corridas WHERE id=%s", corrida_id)
+    data = await bot.db.get('''
+        UPDATE corridas
+        SET resultado='REPROVADA'
+        WHERE id=%s
+        RETURNING canal_id
+    ''', corrida_id)
     thread = bot.get_channel(data[0][0])
     emb = Embeds.red(
         "### <:naogostei:1173824189682159689> Corrida Reprovada\n"
-        f"A corrida de vocês foi reprovada pela staff. Motivo da reprovação:\n>>> {modal.motivo_field.value}"
+        f"A corrida de vocês foi reprovada pela staff. Motivo da reprovação:\n>>> {motivo}"
     )
     await thread.send(content="@everyone", embed=emb)
 
