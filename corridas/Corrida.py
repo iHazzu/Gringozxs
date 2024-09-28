@@ -27,7 +27,7 @@ async def info(itc: Interaction, corrida_id: int):
         FROM participantes p
         INNER JOIN jogadores j ON j.id=p.jogador_id
         WHERE p.corrida_id=%s
-        ORDER BY p;posicao
+        ORDER BY p.posicao
     ''', corrida_id)
     v = ""
     for i, j in enumerate(pdata):
