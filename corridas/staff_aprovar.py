@@ -37,7 +37,7 @@ async def aprovar_corrida(itc: Interaction, corrida_id_param: int = None):
     await bot.db.set(query)
     if corrida_id_param:
         emb = Embeds.green(f"<:icons_like:1279250706208919644> Pontuação da corrida `{corrida_id}` alterada.")
-        await itc.response.send_message(embed=emb)
+        await modal.itc.response.send_message(embed=emb)
     else:
         itc.message.embeds[0].add_field(
             name="Aprovada",
