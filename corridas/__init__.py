@@ -21,7 +21,6 @@ class CorridasCog(commands.Cog):
         self.bot = bot
         self.reenviar_msg_competicao.start()
         self.atualizar_ranking_loop.start()
-        bot.tree.add_command(self.corrida_group)
 
     @tasks.loop(hours=15)
     async def reenviar_msg_competicao(self):
