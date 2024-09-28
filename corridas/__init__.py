@@ -45,3 +45,23 @@ class CorridasCog(commands.Cog):
             corrida_id: o id da corrida (ex: 43)
         """
         await Corrida.info(itc, corrida_id)
+
+    @corrida_group.command(name="pontos")
+    async def corrida_pontos(self, itc: Interaction, corrida_id: int):
+        """Alterar a pontuação dos jogadores em uma corrida
+
+        Args:
+            itc: a interação associado ao comando
+            corrida_id: o id da corrida (ex: 43)
+        """
+        await Corrida.pontos(itc, corrida_id)
+
+    @corrida_group.command(name="anular")
+    async def corrida_anular(self, itc: Interaction, corrida_id: int):
+        """Anular uma corrida (também remove os pontos)
+
+        Args:
+            itc: a interação associado ao comando
+            corrida_id: o id da corrida (ex: 43)
+        """
+        await Corrida.anular(itc, corrida_id)

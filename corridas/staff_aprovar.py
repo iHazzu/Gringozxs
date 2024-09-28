@@ -3,10 +3,12 @@ from discord import ui, TextStyle
 from typing import Optional
 
 
-async def aprovar_corrida(itc: Interaction):
+async def aprovar_corrida(itc: Interaction, corrida_id_param: int = None):
     bot = itc.client
-    emb = itc.message.embeds[0]
-    corrida_id = int(emb.description.split("\n")[0].split(" ")[-1])
+    if corrida_id_param:
+        corrida_id = corrida_id_param
+    else:
+        corrida_id = int(itc.message.embeds[0].description.split("\n")[0].split(" ")[-1])
     jogs_data = await bot.db.get('''
         SELECT j.id, j.discord_id
         FROM jogadores j
@@ -14,7 +16,7 @@ async def aprovar_corrida(itc: Interaction):
         WHERE p.corrida_id=%s
         ORDER BY p.posicao''', corrida_id)
     jog_ids = [d[0] for d in jogs_data]
-    modal = AprovarForm(len(jog_ids))
+    modal = PontosForm(len(jog_ids))
     await itc.response.send_modal(modal)
     await modal.wait()
     if not modal.itc:
@@ -33,13 +35,17 @@ async def aprovar_corrida(itc: Interaction):
         query += f"UPDATE participantes SET pontos={points[i]} WHERE jogador_id={jog_id};"
     query += f"UPDATE corridas SET resultado='Aprovada' WHERE id={corrida_id}"
     await bot.db.set(query)
-    emb.add_field(
-        name="Aprovada",
-        value=f"Moderador: {itc.user.mention}\nPontuações: `{modal.points_field.value}`",
-        inline=False
-    )
-    emb.colour = 3853362
-    await modal.itc.response.edit_message(embed=emb, view=None)
+    if corrida_id_param:
+        emb = Embeds.green(f"<:icons_like:1279250706208919644> Pontuação da corrida `{corrida_id}` alterada.")
+        await itc.response.send_message(embed=emb)
+    else:
+        itc.message.embeds[0].add_field(
+            name="Aprovada",
+            value=f"Moderador: {itc.user.mention}\nPontuações: `{modal.points_field.value}`",
+            inline=False
+        )
+        itc.message.embeds[0].colour = 3853362
+        await modal.itc.response.edit_message(embed=itc.message.embeds[0], view=None)
 
     data = await bot.db.get("SELECT canal_id FROM corridas WHERE id=%s", corrida_id)
     thread = bot.get_channel(data[0][0])
@@ -52,7 +58,7 @@ async def aprovar_corrida(itc: Interaction):
     await thread.send(content="@everyone", embed=emb)
 
 
-class AprovarForm(ui.Modal):
+class PontosForm(ui.Modal):
     points_field = ui.TextInput(
         label="Pontuação para cada um dos {} jogadores:",
         style=TextStyle.short,

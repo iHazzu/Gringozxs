@@ -2,7 +2,7 @@ from core import Interaction, Embeds
 from discord import Embed, utils
 
 
-async def info(itc: Interaction, corrida_id: int):
+async def go(itc: Interaction, corrida_id: int):
     bot = itc.client
     data = await bot.db.get('''
         SELECT criado_em, canal_id, resultado,
