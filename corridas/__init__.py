@@ -10,12 +10,6 @@ from .ranking import update_ranking
 
 
 class CorridasCog(commands.Cog):
-    corrida_group = app_commands.Group(
-        name='corrida',
-        description='gerenciamento de corridas',
-        guild_ids=[1151642725142237249]
-    )
-
     def __init__(self, bot: Bot):
         self.bot = bot
         self.reenviar_msg_competicao.start()
@@ -35,6 +29,12 @@ class CorridasCog(commands.Cog):
     @atualizar_ranking_loop.before_loop
     async def wait_ready(self):
         await self.bot.wait_until_ready()
+
+    corrida_group = app_commands.Group(
+        name='corrida',
+        description='gerenciamento de corridas',
+        guild_ids=[1151642725142237249]
+    )
 
     @corrida_group.command(name="info")
     async def corrida_info(self, itc: Interaction, corrida_id: int):
