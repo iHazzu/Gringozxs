@@ -13,7 +13,7 @@ async def update_ranking(bot: Bot):
         FROM jogadores j
         INNER JOIN participantes p ON p.jogador_id=j.id
         INNER JOIN corridas c ON c.id=p.corrida_id
-        WHERE c.resultado='APROVADA' AND c.criado_em > %s
+        WHERE c.resultado='Aprovada' AND c.criado_em > %s
         GROUP BY j.discord_id
         ORDER BY pts DESC
         LIMIT 10

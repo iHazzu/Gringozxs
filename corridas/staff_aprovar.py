@@ -31,7 +31,7 @@ async def aprovar_corrida(itc: Interaction):
     query = ""
     for i, jog_id in enumerate(jog_ids):
         query += f"UPDATE participantes SET pontos={points[i]} WHERE jogador_id={jog_id};"
-    query += f"UPDATE corridas SET resultado='APROVADA' WHERE id={corrida_id}"
+    query += f"UPDATE corridas SET resultado='Aprovada' WHERE id={corrida_id}"
     await bot.db.set(query)
     emb.add_field(
         name="Aprovada",

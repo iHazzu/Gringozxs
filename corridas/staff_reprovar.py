@@ -26,7 +26,7 @@ async def reprovar_corrida(itc: Interaction):
         SET resultado=%s
         WHERE id=%s
         RETURNING canal_id
-    ''', f"REPROVADA,{motivo}", corrida_id)
+    ''', f"Reprovada. {motivo}", corrida_id)
     thread = bot.get_channel(data[0][0])
     emb = Embeds.red(
         "### <:naogostei:1173824189682159689> Corrida Reprovada\n"
@@ -39,7 +39,7 @@ class ReprovarForm(ui.Modal):
     motivo_field = ui.TextInput(
         label="Motivo pelo qual está reprovando:",
         style=TextStyle.paragraph,
-        max_length=1000,
+        max_length=500,
         required=True
     )
 
