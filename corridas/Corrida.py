@@ -18,7 +18,7 @@ async def info(itc: Interaction, corrida_id: int):
         description=f"### Competição {corrida_id}\nConfira os detalhes da competição:",
         colour=0xffd700
     )
-    emb.add_field(name="Criada em", value=utils.format_dt(d[0], 'f'), inline=True)
+    emb.add_field(name="Criada em", value=utils.format_dt(d[0], 'd'), inline=True)
     criador = f"<@{d[3]}>" if d[3] else "Deletado"
     emb.add_field(name="Criada por", value=criador, inline=True)
     emb.add_field(name="Canal", value=f"<#{d[1]}>", inline=True)
