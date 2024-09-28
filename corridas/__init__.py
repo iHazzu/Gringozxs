@@ -1,6 +1,6 @@
 from discord.ext import commands, tasks
 from core import Bot, Interaction
-from discord import app_commands, Permissions
+from discord import app_commands
 from . import msg_competicao, Corrida
 from .iniciar import iniciar_competicao
 from .feedback import feedback_corrida
@@ -13,8 +13,7 @@ class CorridasCog(commands.Cog):
     corrida_group = app_commands.Group(
         name='corrida',
         description='gerenciamento de corridas',
-        guild_ids=[1151642725142237249],
-        default_permissions=Permissions(administrator=True)
+        guild_ids=[1151642725142237249]
     )
 
     def __init__(self, bot: Bot):
